@@ -1,0 +1,73 @@
+
+
+
+
+1)this keyword in the constructor:The this keyword in an object constructor does not have a value. It is only a substitute for the new object.
+The value of this will become the new object when the constructor is used to create an object.
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<p id="intro"></p>
+
+<script>
+function fruits(name, type, color, taste) {
+    this.name = name;
+    this.type = type;
+    this.color = color;
+    this.taste = taste;
+}
+
+var fruit1 = new fruits("apple", "xyz", "red", "sweet");
+var fruit2 = new fruits("apple", "abc", "green", "sour");
+
+document.getElementById("intro").innerHTML =
+"fruit1 is " + fruit1.color + ". fruit2 is " + myfruit2.color;
+</script>
+
+</body>
+</html>
+
+2)constructor and new keyword?
+             A constructor is any function which is used as a constructor.A function can be written to be used as a constructor 
+or to be called as a normal function, or to be used either way.
+
+creating a single object with new keyword.
+<!DOCTYPE html>
+<html>
+<body>
+
+<p id="intro"></p>
+
+<script>
+var fruits = new Object();
+fruits.name = "apple";
+fruits.color = "red";
+fruits.type = "xyz";
+fruits.taste = "sweet";
+
+document.getElementById("intro").innerHTML =
+fruits.name + " is " +fruits.color + " color.";
+</script>
+
+</body>
+</html>
+
+instanceof in javascript: specifies whether the elements are present with the same type in the array.
+
+<!DOCTYPE html>
+<html>
+<body>
+<p>The instanceof operator returns true if the specified object is an instance of the specified object.</p>
+<p id="intro"></p>
+<script>
+var fruits = ["apple", "orange", "banana","grapes"];
+document.getElementById("intro").innerHTML =
+    (fruits instanceof Array) + "<br>" +
+    (fruits instanceof Object) + "<br>" +
+    (fruits instanceof String) + "<br>" +
+    (fruits instanceof Number);
+</script>
+</body>
+</html>
