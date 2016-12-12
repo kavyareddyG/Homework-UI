@@ -1,0 +1,204 @@
+
+1)operational precedences?
+      Priority in performing operations when we evaluate the expression..
+     ()->values with in these will have the highest precedence.
+      *,/ -> multiplication and division has the second highest precedence.
+      +,- 
+
+    Ex: var a= 11+(5*3); //2*3 will be evaaluated first and the result will be added with 1
+        1)console.log(a);
+        console.log(typeof a);
+      o/p: 26
+          number
+       2)var a= (11+5)*3;
+        console.log(a);
+        console.log(typeof a);
+       o/p:48
+       number
+
+2)a)Difference between == and ===?
+        
+           == is only a value comparison but not datatype comparison.
+        int a=1, string b='1'
+              console.log(a==b); //true
+              console.log(2==3); //false
+              console.log(null==undefined); //true (because null and undefined means no value.)
+
+          === is both value and datatype comparison.
+               console.log(1===1); //true
+               console.log(2===1); // false.
+               console.log(null===undefined);//false
+ b)Difference between != and !==?
+
+             != is a value comparision but it is opposite of ==.
+          int a=1, string b='1'
+              console.log(a!=b); //false
+              console.log(2!=3); //true
+              console.log(null!=undefined); //false (because null and undefined means no value.)
+
+        !== is both value and datatype comparison but it is opposite of ===
+             console.log(1===1); //false
+               console.log(2===1); // true.
+               console.log(null===undefined);//true
+
+3)Difference between Null and Undefined?
+
+       A variable has declared and not assigned any value to that variable. The unassigned variables are initialised by the javascript wth a default value of 
+     undefined.
+       Null is the assignment value. It is assigned as the representation of no value.
+            Ex: var a=null;
+
+4)conditions (if, else, switch)
+    If statement defines a block of code to be executed when the condition gets satisfied.
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<p>Good Morning</p>
+
+<p id="demo">Good Evening!</p>
+
+<script>
+if (2==2) {
+    document.getElementById("demo").innerHTML = "Good day!";
+}
+</script>
+
+</body>
+</html>
+
+
+2)If-else
+
+   If the condition is true then if block gets executed and if the condition is false then else block gets executed.
+
+     
+<html>
+   
+     <body>
+   
+      
+     <script type="text/javascript">
+     var a = 15;
+         
+            
+     if( a > 18 ){
+               
+     document.write("<b>perform addition operation</b>");
+     }
+            
+            
+    else{
+               
+    document.write("<b>perform multiplication operation</b>");
+           
+    }
+   </script>
+   </body>
+
+   </html>
+
+
+3)switch statement:
+         which evaluates an expression to different statements to execute based on the value of the expression. A default case also will be written. If no case gets 
+matched then the default case will be executed. Break statement is must after each statement. Otherwise all the statements will get executed.
+
+<html>
+   <body>
+   
+      <script type="text/javascript">
+         <!--
+            var month='january';
+            document.write("Entering switch block<br />");
+            switch (month)
+            {
+               case 'A': document.write("january<br />");
+               break;
+            
+               case 'B': document.write("february<br />");
+               break;
+            
+               case 'C': document.write("march<br />");
+               break;
+            
+               case 'D': document.write("april<br />");
+               break;
+            
+               case 'F': document.write("may<br />");
+               break;
+            
+               default:  document.write("Unknown month<br />")
+            }
+            document.write("Exiting switch block");
+         //-->
+      </script>
+   </body>
+</html>
+
+output:
+Entering switch block
+january
+Exiting switch block
+
+4) For,while and dowhile loops.
+ 
+For loop:
+
+      The for loop loops through until the given condition gets failed.
+
+<html>
+   
+     <body>
+   
+      
+     <script type="text/javascript">
+     for(var i=10;i>0;i--)
+     {
+     Console.log(i);
+      }
+</script>
+</body>
+</html>
+
+output: 10,9,8-------1.
+
+
+while loop:
+     For the while loop it checks the condition first and if the condition is satisfied it increments the value and print the values until the condition is satisfied.
+   <html>
+   
+     <body>
+   
+      
+     <script type="text/javascript">
+     var i=0;
+    while(i<10)
+    {
+    i++;
+   Console.log(i);
+   }
+ 
+output: 1 to 9
+
+DoWhile loop:
+
+This loop will execute the code block once, before checking if the condition is true, then it will repeat the loop as long as the condition is true.
+
+<html>
+   
+     <body>
+   
+      
+     <script type="text/javascript">
+     var i=0;
+     do{
+     Console.log(i);
+    }while(i<10);
+
+output: 0(infinite times)
+        
+            
+
+
+
