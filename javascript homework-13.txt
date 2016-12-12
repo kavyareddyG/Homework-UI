@@ -1,0 +1,65 @@
+                                                                  javascript - Homework-13
+
+1) java script call apply bind methods? how to use them? what are the use cases when we have to use them?
+                we have objects and for each object they have their own properties and methods.By using cal,apply and bind methods we can write common methods to 
+different objects.
+
+Call method:
+        
+
+<!DOCTYPE html>
+<html>
+<head>
+<title></title>
+</head>
+<body>
+var obj={num:2};
+var addToThis = function(a);
+{
+return this.num+a;
+};
+Console.log(addToThis.call(obj,3));//functinname.call(obj,fuctionarguments);
+</body>
+</html>
+ 
+addToThis function was called for the object. The property of the object was accessed by this.num and this.num is 2 and it added to a which is 3.so the o/p is 5.
+
+apply method: Instead of passing the argument we can pass array as function arguments and bind the data.
+ <!DOCTYPE html>
+<html>
+<head>
+<title></title>
+</head>
+<body>
+var obj={num:2};
+var addToThis = function(a);
+{
+return this.num+a;
+};
+var arr = [1,2,3];
+Console.log(addToThis.apply(obj,arr));
+</body>
+</html>
+
+0/p:8
+
+Bind method: we can bind the array with different objects.
+
+<!DOCTYPE html>
+<html>
+<head>
+<title></title>
+</head>
+<body>
+var obj1={num:2};
+var obj2={num:2};
+var addToThis = function(a);
+{
+return this.num+a;
+};
+var arr = [1,2,3];
+Console.log(addToThis.bind(obj1,arr));
+Console.log(addToThis.bind(obj2,arr));
+</body>
+</html>
+
