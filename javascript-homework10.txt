@@ -1,0 +1,377 @@
+                                                          javascript Homework-10
+1)logical and  logical or
+
+logical AND
+  expr1 && expr2
+   If expr1 is falsy value,we get tehe result as expr1.
+   If expr2 is truthy value,we get the result as expr2.
+   
+Example:
+
+<!DOCTYPE html>
+<html>
+<head>
+<title></title>
+</head>
+<body>
+<script>
+console.log([] && 2); // returns 2
+console.log(false && {});//returns false
+</script>
+</body>
+</html>
+
+2)logical OR
+
+expr1 || expr2
+   If expr1 is truthy value,we get the result as expr1.
+   If expr2 is falsy value,we get the result as expr2.
+
+example:
+
+<!DOCTYPE html>
+<html>
+<head>
+<title></title>
+</head>
+<body>
+<script>
+console.log([] || 2); // returns []
+console.log(true || 0);//returns true.
+</script>
+</body>
+</html>
+
+3)string methods 
+<!DOCTYPE html>
+<html>
+<head>
+<title></title>
+</head>
+<body>
+<script>
+console.log('How are you'.length);// returns 11
+console.log('How are you'.substr(4,10);returns are yo
+console.log('How are you'.toLowerCase());//how are you
+console.log('How are you'.toUpperCase());//HOW ARE YOU
+console.log('How are you'.slice(5,11));//are you
+console.log('How are you'.charAt(0));//H
+
+concat() method:
+<!DOCTYPE html>
+<html>
+<body>
+<p id="demo"></p>
+<script>
+var text1 = "App";
+var text2 = "ban";
+document.getElementById("demo").innerHTML = text1.concat(text2);
+</script>
+
+</body>
+</html>
+
+o/p: Appban.
+
+3)array methods (push, pop, unshift, shift, slice, splice, indexOf, lastIndexOf, forEach, map, concat, reverse, join, ...)
+
+arr.tostring()
+
+The toString() method returns the elements that are present in array seperated by a comma.
+
+<!DOCTYPE html>
+<html>
+<body>
+<p id="demo"></p>
+<script>
+var arr = ["java", "jsp", "netbeans", "servlet","jdbc"];
+document.getElementById("demo").innerHTML = arr.toString();
+</script>
+
+</body>
+</html>
+
+o/p:java,jsp,netbeans,servlet,jdbc
+
+
+2)Join()
+the join() method joins the elements that are present in an array into a string.
+
+<!DOCTYPE html>
+<html>
+<body>
+<p id="demo"></p>
+<script>
+var arr = ["java", "jsp", "netbeans", "servlet","jdbc"];
+document.getElementById("demo").innerHTML = arr.join(" + ");
+</script>
+</body>
+</html>
+
+o/p:java+jsp+netbeans+servlet+jdbc
+
+3)pop():
+   pop() method removes the last element in the array.
+
+<!DOCTYPE html>
+<html>
+<body>
+<button onclick="myFunction()">Try it</button>
+<p id="demo"></p>
+<script>
+var arr = ["java", "jsp", "netbeans", "servlet","jdbc"];
+document.getElementById("demo").innerHTML = arr;
+
+function myFunction() {
+    arr.pop();
+    document.getElementById("demo").innerHTML = arr;
+}
+</script>
+
+</body>
+</html>
+
+o/p:java,jsp,netbeans,servlet.
+
+
+4)push()
+
+The push method adds a new element at the end of an array
+
+<!DOCTYPE html>
+<html>
+<body>
+<button onclick="myFunction()">Try it</button>
+<p id="demo"></p>
+<script>
+var arr = ["java", "jsp", "netbeans", "servlet","jdbc"];
+document.getElementById("demo").innerHTML = arr;
+
+function myFunction() {
+    arr.push("hibernate");
+    document.getElementById("demo").innerHTML = arr;
+}
+</script>
+
+</body>
+</html>
+
+o/p: java,jsp,netbeans,servlet,jdbc,hibernate.
+
+
+5)shift()
+  The shift method removes the values at the starting of the array.
+
+<!DOCTYPE html>
+<html>
+<body>
+<button onclick="myFunction()">Try it</button>
+<p id="demo"></p>
+<script>
+var arr = ["java", "jsp", "netbeans", "servlet","jdbc"];
+document.getElementById("demo").innerHTML = arr;
+
+function myFunction() {
+    arr.shift();
+    document.getElementById("demo").innerHTML = arr;
+}
+</script>
+
+</body>
+</html>
+
+o/p:jsp,netbeans,servlet,jdbc
+
+6)unshift() method
+    Adding the values at the starting of the array.
+
+<!DOCTYPE html>
+<html>
+<body>
+<button onclick="myFunction()">Try it</button>
+<p id="demo"></p>
+<script>
+var arr = ["java", "jsp", "netbeans", "servlet","jdbc"];
+document.getElementById("demo").innerHTML = arr;
+
+function myFunction() {
+    arr.unshift("hibernate");
+    document.getElementById("demo").innerHTML = arr;
+}
+</script>
+</body>
+</html>
+
+o/p: hibernate,java,jsp,netbeans,servlet,jdbc
+
+7)shift() method.
+
+removing the old value and replacing the new value at that particular index position.
+
+<!DOCTYPE html>
+<html>
+<body>
+<button onclick="myFunction()">Try it</button>
+<p id="demo"></p>
+<script>
+var arr = ["java", "jsp", "netbeans", "servlet","jdbc"];
+document.getElementById("demo").innerHTML = arr;
+
+function myFunction() {
+    arr[3] = "hibernate";
+    document.getElementById("demo").innerHTML = arr;
+}
+</script>
+
+</body>
+</html>
+
+o/p:java,jsp,netbeans,hibernate,jdbc.
+
+8)length() method
+
+The length property is to add new element at the end of  an array. This method is similar to the push() method.
+
+<!DOCTYPE html>
+<html>
+<body>
+<button onclick="myFunction()">Try it</button>
+<p id="demo"></p>
+<script>
+var arr = ["java", "jsp", "netbeans", "servlet","jdbc"];
+document.getElementById("demo").innerHTML = arr;
+
+function myFunction() {
+    arr[arr.length] = "hibernate";
+    document.getElementById("demo").innerHTML = arr;
+}
+</script>
+</body>
+</html>
+
+o/p:java,jsp,netbeans,servlet,jdbc,hibernate
+
+9)splice() method
+
+splice() method will modify the existing array.from the start index it will add the new elements to an array.
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<p>The splice() method adds new elements to an array.</p>
+
+<button onclick="myFunction()">Try it</button>
+
+<p id="demo"></p>
+
+<script>
+var arr = ["java", "jsp", "netbeans", "servlet","jdbc"];
+document.getElementById("demo").innerHTML = arr;
+function myFunction() {
+    arr.splice(2, 0, "soap", "rest");
+    document.getElementById("demo").innerHTML = fruits;
+}
+</script>
+
+</body>
+</html>
+
+o/p: java,jsp,soap,rest,netbeans,servlet,jdbc
+
+10)concat() method
+
+Inorder to join the elements that are present in arrays is concat() method.
+
+<!DOCTYPE html>
+<html>
+<body>
+<p id="demo"></p>
+<script>
+var arr1 = ["Hi", "BYE","gm"];
+var arr2 = ["hello", "how", "you"];
+var array = arr1.concat(arr2);
+
+document.getElementById("demo").innerHTML = array;
+</script>
+</body>
+</html>
+
+o/p:Hi,BYE,gm,hello,how,you
+
+11)slice() method
+
+This  slice() example slices out a part of an array starting from array element.
+
+<!DOCTYPE html>
+<html>
+<body>
+<p id="demo"></p>
+<script>
+var arr1 = ["Hi", "BYE","gm"];
+var arr2 = arr1.slice(0);
+document.getElementById("demo").innerHTML = arr1 + "<br>" + arr2;
+</script>
+
+</body>
+</html>
+
+o/p: Hi,BYE,gm
+     Hi,BYE,gm
+
+12).foreach()
+       it accepts a function.This function will be accepted for every value of the array.
+<!DOCTYPE html>
+<html>
+<body>
+<script>
+var arr=['java', 'jsp', 'netbeans', 'servlet','jdbc'];
+arr.forEach(value,index,arr)
+{
+Console.log(value);
+});
+</script>
+</body>
+</html>
+
+output:
+java
+jsp
+netbeans
+servlet
+jdbc
+
+
+13).map()
+     This function will be executed for every value of the array.it will return the value along with the index.
+
+<!DOCTYPE html>
+<html>
+<body>
+<script>
+var arr=['java', 'jsp', 'netbeans', 'servlet','jdbc'];
+arr.map(value,index,arr)
+{
+return value+index;
+});
+Console.log(value);
+
+</script>
+</body>
+</html>
+
+output:
+java0,jsp1,netbeans2,servlet3jdbc4.
+
+
+
+
+
+
+
+
+
+
+
+
+
