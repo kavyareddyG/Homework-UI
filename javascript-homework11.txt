@@ -1,0 +1,181 @@
+                                                       javascript - Homework-11
+
+1)Diff between arr.map() and arr.foreach() methods?
+     arr.Foreach() will be executed for every value of the array. It returns the values in the array based on the condition.
+     arr.map() will be executed for every value of the array. It returns the values along with the index.
+
+2) adding property, delete a property, edit property value, check if a property exists?
+<!DOCTYPE html>
+<html>
+<head>
+<title></title>
+</head>
+<body>
+<script>var obj={};
+var fruits={
+     name:'apple';
+     color:'red';
+     sweet:'taste';
+     };
+Console.log(fruits); //we will get all the properties of object.
+</script>
+</body>
+</html>
+
+Adding a property:
+<!DOCTYPE html>
+<html>
+<head>
+<title></title>
+</head>
+<body>
+<script>var obj={};
+var fruits={
+     name:'apple';
+     color:'red';
+     sweet:'taste';
+     };
+Console.log(fruits); 
+fruits1.type='abc';
+Console.log('type of fruit is',fruits)// we will get the properties of an object along with the newly added property.
+</script>
+</body>
+</html>
+
+Delete a property:
+
+<!DOCTYPE html>
+<html>
+<head>
+<title></title>
+</head>
+<body>
+<script>var obj={};
+var fruits={
+     name:'apple';
+     color:'red';
+     sweet:'taste';
+     };
+Console.log(fruits); 
+delete fruits1.color='abc';
+Console.log('deleted property is:',fruits);//we will get the properties of an object with the deleted property. 
+</script>
+</body>
+</html>
+
+Modifying a property value:
+
+<!DOCTYPE html>
+<html>
+<head>
+<title></title>
+</head>
+<body>
+<script>var obj={};
+var fruits={
+     name:'apple';
+     color:'red';
+     sweet:'taste';
+     };
+Console.log(fruits); 
+ fruits1.color='green';
+Console.log('modified property is:',fruits); //we will get the properties of an object with the modified color value.
+</script>
+</body>
+</html>
+
+
+.hasOwnProperty() ->This property is used for checking whether the property exists or not. If the property exists it returns true otherwise it returns false.
+
+<!DOCTYPE html>
+<html>
+<head>
+<title></title>
+</head>
+<body>
+<script>var obj={};
+var fruits={
+     name:'apple';
+     color:'red';
+     sweet:'taste';
+     };
+Console.log(fruits); 
+
+Console.log(fruits.hasOwnProperty('name')); 
+</script>
+</body>
+</html>
+
+3)Diff ways of creating an object?
+
+1)By using object literal
+2)by using the new keyword
+3)by using object constructor i.e.,we are creating objects of the constructed type.
+
+1)By using object literal
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<p>Creating a JavaScript Object.</p>
+
+<p id="intro"></p>
+
+<script>
+var fruits = {name:"apple", color:"red", type:"abc", taste:"sweet"};
+
+document.getElementById("intro").innerHTML =
+fruits.name + " is " + fruits.color + " in color";
+</script>
+
+</body>
+</html>
+
+2)By using the new keyword
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<p id="intro"></p>
+
+<script>
+var fruits = new Object();
+fruits.name = "apple";
+fruits.color = "red";
+fruits.type = "abc";
+fruits.taste = "sweet";
+
+document.getElementById("intro").innerHTML =
+fruits.name + " is " + fruits.color + " in color.";
+</script>
+
+</body>
+</html>
+
+3)By using object constructor
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<p id="intro"></p>
+
+<script>
+function fruits(name, color, taste, type) {
+    this.name = name;
+    this.color = color;
+    this.taste = taste;
+    this.type = type;
+}
+
+var foo = new fruits("apple", "red", "sweet", "abc");
+var foo1 = new fruits("apple", "green", "sour", "xyz");
+
+document.getElementById("intro").innerHTML =
+" apple is " + foo.color + ". other apple is " + foo1.color;
+</script>
+
+</body>
+</html>
