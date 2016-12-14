@@ -1,0 +1,67 @@
+ 1)try to understand sass pre processor
+      In SASS we are having some features like nestins,mixins,variables,inheritance etc.,that doesn't exist in CSS. with these features we can design and maintain
+ style sheets very easily.
+
+We are having two files when working with SASS
+1).scss ->input file
+2).css ->output file
+
+
+2) advantages of using sass?
+   1)It uses the standard CSS syntax.
+   2)maintaing the code is very much easier.
+   3)code reusability-In the future if we want to reuse the code or if we want to modify the code then the task becomes very much easier with SASS.
+
+3) differences between sass,less and stylus?
+  SASS preprocessor:
+     1)SASS used the .scss file extension.
+     2)It uses the semi-columns and curly brackets but previously it didn't used them.
+
+    Without using semi-columns in sass
+     /* style.sass */
+    h1
+  color: #0982c1
+
+with semi-columns
+h1 {
+  color: #0982C1;
+}
+
+LESS preprocessor:
+1) It also uses the standard CSS syntax.
+2)LESS uses the .less file extension.
+3)It uses the semi-columns and curly brackets.
+ 
+Example:
+h1 {
+  color: #0982C1;
+}
+
+STYLUS preprocessor:
+1) It also uses the standard CSS syntax.
+2)STYLUS uses the .styl file extension.
+3)brackets, colons, and semi-colons are all optional. 
+
+Example: with brackets,colons and semi-colons
+/* style.styl */
+h1 {
+  color: #0982C1;
+}
+ 
+/* omit brackets */
+h1
+  color: #0982C1;
+ 
+/* omit colons and semi-colons */
+h1
+  color #0982C1;
+
+Example: with no colons and brackets,compile without any error.
+
+h1 {
+  color #0982c1
+}
+h2
+  font-size: 1.2em
+
+
