@@ -1,0 +1,41 @@
+                                                                        Homework-8
+1)Why we use Javascript?
+         1)javascript is the most commonly used scripting language.
+         2)JavaScript is very easy to implement. We need to put our code in the HTML document and tell the browser that it is JavaScript.When a user requests an HTML 
+           page with JavaScript in it, the script is sent to the browser and it's up to the browser to do something with it.
+         3)asynchronously retrieving data from a server and loading it into the page (By using AJAX).
+
+2)What is Dom manipulation?
+   DOM stands for Document Object Model.
+1)HTML is read by the browser and converted into tree like structure.
+2)Event-Handling operations can be done on DOM.
+3)Browser has to make changes to web page dynamically.It keeps track or make changes to webpage dynamically.
+
+3)what are the events in a web page? 
+    Events in a web page:-
+     When a user clicks the mouse   
+     When a web page has loaded    
+     When an image has been loaded 
+     When the mouse moves over an element 
+     When an input field is changed       
+     When an HTML form is submitted       
+     When a user strokes a key      
+
+4)javascript  datatypes.
+    String, Number, Boolean, Array, Object are the javacsript datatypes.
+
+5)Javascript conditions and loops.
+  Conditional statements are used to perform different actions based on different conditions.
+1) if condition is used to specify a block of code to be executed, if a specified condition is true.
+2) else condition is used to specify a block of code to be executed, if the same condition is false.
+3) else if is usde to specify a new condition to test, if the first condition is false.
+4)switch statement is used to specify many alternative blocks of code to be executed.
+
+Loops can execute a block of code a number of times.
+1)for loop- for loop loops through a block of code a number of times.
+2)forEach() is used to iterate through the collection.
+3)while loop- It loops through a block of code while a specified condition is true.
+4)do/while - it also loops through a block of code while a specified condition is true and the loop will be executed atleast once.
+
+
+          
