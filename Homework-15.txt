@@ -1,0 +1,62 @@
+                                                                  Homework-15
+1)About Event Delegation?
+     The delegate () method is used to attach one or more event handlers for specified elements which are the children of selected elements. This method executes
+ a function to run when the event occurs.
+The attached event handlers with the delegate () method works for both current and future elements.    
+
+Example:
+<!DOCTYPE html>  
+<html lang="en">  
+<head>   
+  <title>delegate demo</title>  
+  <style>  
+  p {  
+    background: yellow;  
+    font-weight: bold;  
+    cursor: pointer;  
+    padding: 5px;  
+  }  
+  p.over {  
+    background: #ccc;  
+  }  
+  span {  
+    color: red;  
+  }  
+  </style>  
+  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>  
+</head>  
+<body>  
+<p>This is a single paragraph. Click me for next.</p>  
+<script>  
+$( "body" ).delegate( "p", "click", function() {  
+  $(this ).after( "<p>Click me for another paragraph.</p>" );  
+});  
+</script>  
+</body>  
+</html>  
+
+
+2)What is JQuery?
+   jQuery is a fast, cross-platform and feature-rich JavaScript library. It is designed to simplify the client-side scripting of HTML. It makes things like
+ HTML document traversal and manipulation, animation, event handling, and AJAX very simple with an easy-to-use API that works on a lot of different type of browsers.
+
+The main purpose of jQuery is to provide an easy way to use JavaScript on your website to make it more interactive and attractive. It is also used to add animation.
+1)jQuery is platform-independent.
+2)jQuery means "write less do more".
+3)jQuery simplifies AJAX call and DOM manipulation.
+
+3)What is the use of JQuery?
+ --> It is very fast and extensible.
+ -->It facilitates the users to write UI related function codes in minimum possible lines.
+ -->It improves the performance of an application.
+ -->Browser's compatible web applications can be developed.
+ -->It uses mostly new features of new browsers.
+
+4) $(document).ready vs window.onload?
+   The ready event occurs after the HTML document has been loaded, while the onload event occurs later, when all content (e.g. images) also has been loaded. 
+The onload event is a standard event in the DOM, while the ready event is specific to jQuery.
+
+5)What is $?
+
+ The jQuery syntax is used for selecting HTML elements and performing some action on the element(s). Basic syntax is: $(selector).action() A $ sign to 
+define/access jQuery. A (selector) to "query (or find)" HTML elements. A jQuery action() to be performed on the element(s)
