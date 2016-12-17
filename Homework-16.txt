@@ -1,0 +1,1571 @@
+                                                                Homework-16
+1)Basic Selectors in jQuery.
+Jquery("*")
+    -->selects all elements.
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>all demo</title>
+  <style>
+  h3 {
+    margin: 0;
+  }
+  div, span, p {
+    width: 80px;
+    height: 40px;
+    float: left;
+    padding: 10px;
+    margin: 10px;
+    background-color: #EEEEEE;
+  }
+  </style>
+  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+</head>
+<body>
+ 
+<div>DIV</div>
+<span>SPAN</span>
+<p>P <button>Button</button></p>
+ 
+<script>
+var elementCount = $( "*" ).css( "border", "3px solid red" ).length;
+$( "body" ).prepend( "<h3>" + elementCount + " elements found</h3>" );
+</script>
+ 
+</body>
+</html>
+
+2)class selector(".class")
+  selects al elements with the given class.
+
+Example:
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>class demo</title>
+  <style>
+  div, span {
+    width: 120px;
+    height: 40px;
+    float: left;
+    padding: 10px;
+    margin: 10px;
+    background-color: #EEEEEE;
+  }
+  </style>
+  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+</head>
+<body>
+ 
+<div class="notMe">div class="notMe"</div>
+<div class="myClass">div class="myClass"</div>
+<span class="myClass">span class="myClass"</span>
+ 
+<script>
+$( ".myClass" ).css( "border", "3px solid red" );
+</script>
+ 
+</body>
+</html>
+
+3)Element selector("element")
+   selects all elements with the given tag name.
+
+Example:
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>element demo</title>
+  <style>
+  div, span {
+    width: 60px;
+    height: 60px;
+    float: left;
+    padding: 10px;
+    margin: 10px;
+    background-color: #eee;
+  }
+  </style>
+  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+</head>
+<body>
+ 
+<div>DIV1</div>
+<div>DIV2</div>
+<span>SPAN</span>
+ 
+<script>
+$( "div" ).css( "border", "9px solid red" );
+</script>
+ 
+</body>
+</html>
+
+4)Jquery("#id")
+   Selects a single element with the given id attribute.
+
+Example::
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>id demo</title>
+  <style>
+  div {
+    width: 90px;
+    height: 90px;
+    float: left;
+    padding: 5px;
+    margin: 5px;
+    background-color: #eee;
+  }
+  </style>
+  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+</head>
+<body>
+ 
+<div id="notMe"><p>id="notMe"</p></div>
+<div id="myDiv">id="myDiv"</div>
+ 
+<script>
+$( "#myDiv" ).css( "border", "3px solid red" );
+</script>
+ 
+</body>
+</html>
+
+2)attribute based selectors in jQuery
+i)jQuery( "[attribute|='value']" 
+     Selects elements that have the specified attribute with a value either equal to a given string or starting with that string followed by a hyphen (-).
+Example:
+  <!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>attributeContainsPrefix demo</title>
+  <style>
+  a {
+    display: inline-block;
+  }
+  </style>
+  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+</head>
+<body>
+ 
+<a href="example.html" hreflang="en">Some text</a>
+<a href="example.html" hreflang="en-UK">Some other text</a>
+<a href="example.html" hreflang="english">will not be outlined</a>
+ 
+<script>
+$( "a[hreflang|='en']" ).css( "border", "3px dotted green" );
+</script>
+ 
+</body>
+</html>
+
+ii)jQuery( "[attribute*='value']" )
+   Selects elements that have the specified attribute with a value containing a given substring.
+
+Example:
+   <!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>attributeContains demo</title>
+  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+</head>
+<body>
+ 
+<input name="man-news">
+<input name="milkman">
+<input name="letterman2">
+<input name="newmilk">
+ 
+<script>
+$( "input[name*='man']" ).val( "has man in it!" );
+</script>
+ 
+</body>
+</html>
+
+iii)jQuery( "[attribute~='value']" )
+    Selects elements that have the specified attribute with a value containing a given word, delimited by spaces.
+
+Example:
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>attributeContainsWord demo</title>
+  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+</head>
+<body>
+ 
+<input name="man-news">
+<input name="milk man">
+<input name="letterman2">
+<input name="newmilk">
+ 
+<script>
+$( "input[name~='man']" ).val( "mr. man is in it!" );
+</script>
+ 
+</body>
+</html>
+
+iv)jQuery( "[attribute$='value']" )
+    Selects elements that have the specified attribute with a value ending exactly with a given string. The comparison is case sensitive.
+
+Example:
+ <!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>attributeEndsWith demo</title>
+  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+</head>
+<body>
+ 
+<input name="newsletter">
+<input name="milkman">
+<input name="jobletter">
+ 
+<script>
+$( "input[name$='letter']" ).val( "a letter" );
+</script>
+ 
+</body>
+</html
+
+v)jQuery( "[attribute='value']" )
+   Selects elements that have the specified attribute with a value exactly equal to a certain value.
+
+Example:
+   <!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>attributeEquals demo</title>
+  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+</head>
+<body>
+ 
+<div>
+  <label>
+    <input type="radio" name="newsletter" value="Hot Fuzz">
+    <span>name?</span>
+  </label>
+</div>
+<div>
+  <label>
+    <input type="radio" name="newsletter" value="Cold Fusion">
+    <span>value?</span>
+  </label>
+</div>
+<div>
+  <label>
+    <input type="radio" name="newsletter" value="Evil Plans">
+    <span>value?</span>
+  </label>
+</div>
+ 
+<script>
+$( "input[value='Hot Fuzz']" ).next().text( "Hot Fuzz" );
+</script>
+ 
+</body>
+</html>
+
+vi)jQuery( "[attribute!='value']" )
+   Select elements that either don't have the specified attribute, or do have the specified attribute but not with a certain value.
+
+Example:
+   <!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>attributeNotEqual demo</title>
+  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+</head>
+<body>
+ 
+<div>
+  <input type="radio" name="newsletter" value="Hot Fuzz">
+  <span>name is newsletter</span>
+</div>
+<div>
+  <input type="radio" value="Cold Fusion">
+  <span>no name</span>
+</div>
+<div>
+  <input type="radio" name="accept" value="Evil Plans">
+  <span>name is accept</span>
+</div>
+ 
+<script>
+$( "input[name!='newsletter']" ).next().append( "<b>; not newsletter</b>" );
+</script>
+ 
+</body>
+</html>
+
+vii)jQuery( "[attribute^='value']" )
+   Selects elements that have the specified attribute with a value beginning exactly with a given string.
+
+Example:
+  <!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>attributeStartsWith demo</title>
+  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+</head>
+<body>
+ 
+<input name="newsletter">
+<input name="milkman">
+<input name="newsboy">
+ 
+<script>
+$( "input[name^='news']" ).val( "news here!" );
+</script>
+ 
+</body>
+</html>
+
+viii)jQuery( "[attribute]" )
+    Selects elements that have the specified attribute, with any value.
+
+Example:
+  <!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>attributeHas demo</title>
+  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+</head>
+<body>
+ 
+<div>no id</div>
+<div id="hey">with id</div>
+<div id="there">has an id</div>
+<div>nope</div>
+ 
+<script>
+// Using .one() so the handler is executed at most once
+// per element per event type
+$( "div[id]" ).one( "click", function() {
+  var idString = $( this ).text() + " = " + $( this ).attr( "id" );
+  $( this ).text( idString );
+});
+</script>
+ 
+</body>
+</html>
+
+ix)jQuery( "[attributeFilter1][attributeFilter2][attributeFilterN]" )
+attributeFilter1: An attribute filter.
+
+attributeFilter2: Another attribute filter, reducing the selection even more.
+
+attributeFilterN: As many more attribute filters as necessary.
+
+Example:
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>attributeMultiple demo</title>
+  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+</head>
+<body>
+ 
+<input id="man-news" name="man-news">
+<input name="milkman">
+<input id="letterman" name="new-letterman">
+<input name="newmilk">
+ 
+<script>
+$( "input[id][name$='man']" ).val( "only this one" );
+</script>
+ 
+</body>
+</html>
+
+3)basic filter.
+i)jQuery animate()
+     The jQuery animate() method provides you a way to create custom animations.
+Example:
+<!DOCTYPE html>  
+<html>  
+<head>  
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>  
+<script>   
+$(document).ready(function(){  
+    $("button").click(function(){  
+        $("div").animate({left: '450px'});  
+    });  
+});  
+</script>   
+</head>  
+<body>  
+<button>Start Animation</button>  
+<p>A simple animation example:</p>  
+<div style="background:#98bf21;height:100px;width:100px;position:absolute;"></div>  
+</body>  
+</html>  
+
+ii)jQuery( ":eq(index)" )
+  Select the element at index n within the matched set.
+
+Example:<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>eq demo</title>
+  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+</head>
+<body>
+ 
+<table border="1">
+  <tr><td>TD #0</td><td>TD #1</td><td>TD #2</td></tr>
+  <tr><td>TD #3</td><td>TD #4</td><td>TD #5</td></tr>
+  <tr><td>TD #6</td><td>TD #7</td><td>TD #8</td></tr>
+</table>
+ 
+<script>
+$( "td:eq( 2 )" ).css( "color", "red" );
+</script>
+ 
+</body>
+</html>
+
+iii)jQuery( ":even" )
+    Selects even elements, zero-indexed.
+Example:
+    <!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>even demo</title>
+  <style>
+  table {
+    background: #eee;
+  }
+  </style>
+  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+</head>
+<body>
+ 
+<table border="1">
+  <tr><td>Row with Index #0</td></tr>
+  <tr><td>Row with Index #1</td></tr>
+  <tr><td>Row with Index #2</td></tr>
+  <tr><td>Row with Index #3</td></tr>
+</table>
+ 
+<script>
+$( "tr:even" ).css( "background-color", "#bbf" );
+</script>
+ 
+</body>
+</html>
+
+iv)jQuery( ":first" )
+    Selects the first matched DOM element.
+Example:
+   <!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>first demo</title>
+  <style>
+  td {
+    color: blue;
+    font-weight: bold;
+  }
+  </style>
+  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+</head>
+<body>
+ 
+<table>
+  <tr><td>Row 1</td></tr>
+  <tr><td>Row 2</td></tr>
+  <tr><td>Row 3</td></tr>
+</table>
+ 
+<script>
+$( "tr:first" ).css( "font-style", "italic" );
+</script>
+ 
+</body>
+</html>
+
+v)jQuery( ":focus" )
+    The jQuery focus event occurs when an element gains focus. It is generated by a mouse click or by navigating to it.
+
+This event is implicitly used to limited sets of elements such as form elements like <input>, <select> etc. and links <a href>. The focused elements are usually 
+highlighted in some way by the browsers.
+
+The focus method is often used together with blur () method.
+Example:
+   <!doctype html>  
+<html lang="en">  
+<head>  
+  <meta charset="utf-8">  
+  <title>focus demo</title>  
+  <style>  
+  span {  
+    display: none;  
+  }  
+  </style>  
+  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>  
+</head>  
+<body>  
+ <p><input type="text"> <span>Focus starts.. Write your name.</span></p>  
+<p><input type="password"> <span>Focus starts.. Write your password.</span></p>  
+ <script>  
+$( "input" ).focus(function() {  
+  $( this ).next( "span" ).css( "display", "inline" ).fadeOut( 2000 );  
+});  
+</script>  
+ </body>  
+</html>  
+
+vi)jQuery( ":gt(index)" )
+    Select all elements at an index greater than index within the matched set.
+Example:
+   <!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>gt demo</title>
+  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+</head>
+<body>
+ 
+<table border="1">
+  <tr><td>TD #0</td><td>TD #1</td><td>TD #2</td></tr>
+  <tr><td>TD #3</td><td>TD #4</td><td>TD #5</td></tr>
+  <tr><td>TD #6</td><td>TD #7</td><td>TD #8</td></tr>
+</table>
+ 
+<script>
+$( "td:gt(4)" ).css( "backgroundColor", "yellow" );
+$( "td:gt(-2)" ).css( "color", "red" );
+</script>
+ 
+</body>
+</html>
+
+vii)jQuery( ":header" )
+   Selects all elements that are headers, like h1, h2, h3 and so on.
+Example:
+   <!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>header demo</title>
+  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+</head>
+<body>
+ 
+<h1>Header 1</h1>
+<p>Contents 1</p>
+<h2>Header 2</h2>
+<p>Contents 2</p>
+ 
+<script>
+$( ":header" ).css({ background: "#ccc", color: "blue" });
+</script>
+ 
+</body>
+</html>
+
+viii)jQuery( ":lang(language)" )
+    Selects all elements of the specified language.
+Example:
+   <!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>lang demo</title>
+  <style>
+  body {
+    background-color: #ccc;
+  }
+  h3 {
+    margin: .25em 0;
+  }
+  div {
+    line-height: 1.5em
+  }
+  .usa {
+    background-color: #f00;
+    color: #fff;
+  }
+  .usa .usa {
+    background-color: #fff;
+    color: #000;
+  }
+  .usa .usa .usa {
+    background-color: #00f;
+    color: #fff;
+  }
+  .spain {
+    background-color: #f00;
+    color: #ff0;
+  }
+  .spain .spain {
+    background-color: #ff0;
+    color: #f00;
+    line-height: 3em;
+  }
+  .spain .spain .spain {
+    background-color: #f00;
+    color: #ff0;
+    line-height: 1.5em;
+  }
+  </style>
+  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+</head>
+<body>
+ 
+<h3>USA</h3>
+<div lang="en-us">red
+  <div>white
+    <div>and blue</div>
+  </div>
+</div>
+<h3>España</h3>
+<div lang="es-es">rojo
+  <div>amarillo
+    <div>y rojo</div>
+  </div>
+</div>
+ 
+<script>
+$( "div:lang(en-us)" ).addClass( "usa" );
+$( "div:lang(es-es)" ).addClass( "spain" );
+</script>
+ 
+</body>
+</html>
+
+ix)jQuery( ":last" )
+    Selects the last matched element.
+Example:
+   <!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>last demo</title>
+  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+</head>
+<body>
+ 
+<table>
+  <tr><td>First Row</td></tr>
+  <tr><td>Middle Row</td></tr>
+  <tr><td>Last Row</td></tr>
+</table>
+ 
+<script>
+$( "tr:last" ).css({ backgroundColor: "yellow", fontWeight: "bolder" });
+</script>
+ 
+</body>
+</html>
+
+x)jQuery( ":lt(index)" )
+    Select all elements at an index less than index within the matched set.
+  Example:
+    <!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>lt demo</title>
+  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+</head>
+<body>
+ 
+<table border="1">
+  <tr><td>TD #0</td><td>TD #1</td><td>TD #2</td></tr>
+  <tr><td>TD #3</td><td>TD #4</td><td>TD #5</td></tr>
+  <tr><td>TD #6</td><td>TD #7</td><td>TD #8</td></tr>
+</table>
+ 
+<script>
+$( "td:lt(4)" ).css( "backgroundColor", "yellow" );
+$( "td:lt(-2)" ).css( "color", "red" );
+</script>
+ 
+</body>
+</html>
+
+xi)jQuery( ":not(selector)" )
+     A selector with which to filter by.
+Example:
+   <!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>not demo</title>
+  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+</head>
+<body>
+ 
+<div>
+  <input type="checkbox" name="a">
+  <span>Mary</span>
+</div>
+<div>
+  <input type="checkbox" name="b">
+  <span>lcm</span>
+</div>
+<div>
+  <input type="checkbox" name="c" checked="checked">
+  <span>Peter</span>
+</div>
+ 
+<script>
+$( "input:not(:checked) + span" ).css( "background-color", "yellow" );
+$( "input").attr( "disabled", "disabled" );
+</script>
+ 
+</body>
+</html>
+
+xii)jQuery( ":odd" )
+   Selects odd elements, zero-indexed.
+Example:
+    <!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>odd demo</title>
+  <style>
+  table {
+    background: #f3f7f5;
+  }
+  </style>
+  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+</head>
+<body>
+ 
+<table border="1">
+  <tr><td>Row with Index #0</td></tr>
+  <tr><td>Row with Index #1</td></tr>
+  <tr><td>Row with Index #2</td></tr>
+  <tr><td>Row with Index #3</td></tr>
+</table>
+ 
+<script>
+$( "tr:odd" ).css( "background-color", "#bbbbff" );
+</script>
+ 
+</body>
+</html>
+
+xiii)jQuery( ":odd" )
+   Selects odd elements, zero-indexed.
+Example:
+   <!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>odd demo</title>
+  <style>
+  table {
+    background: #f3f7f5;
+  }
+  </style>
+  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+</head>
+<body>
+ 
+<table border="1">
+  <tr><td>Row with Index #0</td></tr>
+  <tr><td>Row with Index #1</td></tr>
+  <tr><td>Row with Index #2</td></tr>
+  <tr><td>Row with Index #3</td></tr>
+</table>
+ 
+<script>
+$( "tr:odd" ).css( "background-color", "#bbbbff" );
+</script>
+ 
+</body>
+</html>
+
+xiv)jQuery( ":root" )
+    Selects the element that is the root of the document.
+Example:
+   <!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>root demo</title>
+  <style>
+  span.fot {
+    color: red;
+    font-size: 120%;
+    font-style: italic;
+  }
+  </style>
+  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+</head>
+<body>
+ 
+<div id="log">The root of this document is: </div>
+ 
+<script>
+$( "<b></b>" ).html( $( ":root" )[ 0 ].nodeName ).appendTo( "#log" );
+</script>
+ 
+</body>
+</html>
+   
+4)child filters
+ i)jQuery( ":first-child" )
+        Selects all elements that are the first child of their parent.
+Example:
+   <!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>first-child demo</title>
+  <style>
+  span {
+    color: #008;
+  }
+  span.sogreen {
+    color: green;
+    font-weight: bolder;
+  }
+  </style>
+  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+</head>
+<body>
+ 
+<div>
+  <span>John,</span>
+  <span>Karl,</span>
+  <span>Brandon</span>
+</div>
+<div>
+  <span>Glen,</span>
+  <span>Tane,</span>
+  <span>Ralph</span>
+</div>
+ 
+<script>
+$( "div span:first-child" )
+  .css( "text-decoration", "underline" )
+  .hover(function() {
+    $( this ).addClass( "sogreen" );
+  }, function() {
+    $( this ).removeClass( "sogreen" );
+  });
+</script>
+ 
+</body>
+</html>
+
+ii)jQuery( ":first-of-type" )
+   Selects all elements that are the first among siblings of the same element name.
+Example:
+    <!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>first-of-type demo</title>
+  <style>
+  span.fot {
+    color: red;
+    font-size: 120%;
+    font-style: italic;
+  }
+  </style>
+  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+</head>
+<body>
+ 
+<div>
+  <span>Corey,</span>
+  <span>Yehuda,</span>
+  <span>Adam,</span>
+  <span>Todd</span>
+</div>
+<div>
+  <b>Nobody,</b>
+  <span>Jörn,</span>
+  <span>Scott,</span>
+  <span>Timo</span>
+</div>
+ 
+<script>
+$( "span:first-of-type" ).addClass( "fot" );
+</script>
+ 
+</body>
+</html>
+
+iii)jQuery( ":last-child" )
+    Selects all elements that are the last child of their parent.
+Example:
+    <!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>last-child demo</title>
+  <style>
+  span.solast {
+    text-decoration: line-through;
+  }
+  </style>
+  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+</head>
+<body>
+ 
+<div>
+  <span>John,</span>
+  <span>Karl,</span>
+  <span>Brandon,</span>
+  <span>Sam</span>
+</div>
+<div>
+  <span>Glen,</span>
+  <span>Tane,</span>
+  <span>Ralph,</span>
+  <span>David</span>
+</div>
+ 
+<script>
+$( "div span:last-child" )
+  .css({ color:"red", fontSize:"80%" })
+  .hover(function() {
+    $( this ).addClass( "solast" );
+  }, function() {
+    $( this ).removeClass( "solast" );
+  });
+</script>
+ 
+</body>
+</html>
+
+iv)jQuery( ":last-of-type" )
+     Selects all elements that are the last among siblings of the same element name.
+Example:
+    <!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>last-of-type demo</title>
+  <style>
+  span.solast {
+    text-decoration: line-through;
+  }
+  </style>
+  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+</head>
+<body>
+ 
+<div>
+  <span>Corey,</span>
+  <span>Yehuda,</span>
+  <span>Adam,</span>
+  <span>Todd</span>
+</div>
+<div>
+  <span>Jörn,</span>
+  <span>Scott,</span>
+  <span>Timo,</span>
+  <b>Nobody</b>
+</div>
+ 
+<script>
+$( "span:last-of-type" )
+  .css({ color:"red", fontSize:"80%" })
+  .hover(function() {
+    $( this ).addClass( "solast" );
+  }, function() {
+    $( this ).removeClass( "solast" );
+  });
+</script>
+ 
+</body>
+</html>
+
+v)jQuery( ":nth-child(index/even/odd/equation)" 
+   Selects all elements that are the nth-child of their parent.
+Example:
+   <!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>nth-child demo</title>
+  <style>
+  div {
+    float: left;
+  }
+  span {
+    color: blue;
+  }
+  </style>
+  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+</head>
+<body>
+ 
+<div>
+  <ul>
+    <li>John</li>
+    <li>Karl</li>
+    <li>Brandon</li>
+  </ul>
+</div>
+<div>
+  <ul>
+    <li>Sam</li>
+  </ul>
+</div>
+<div>
+  <ul>
+    <li>Glen</li>
+    <li>Tane</li>
+    <li>Ralph</li>
+    <li>David</li>
+  </ul>
+</div>
+ 
+<script>
+$( "ul li:nth-child(2)" ).append( "<span> - 2nd!</span>" );
+</script>
+ 
+</body>
+</html>
+
+vi)jQuery( ":nth-last-of-type(index/even/odd/equation)" )
+   Selects all the elements that are the nth-child of their parent in relation to siblings with the same element name, counting from the last element to the first.
+
+Example:
+  <!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>nth-last-of-type demo</title>
+  <style>
+  div {
+    float: left;
+  }
+  span {
+    color: blue;
+  }
+  </style>
+  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+</head>
+<body>
+ 
+<div>
+  <ul>
+    <li>John</li>
+    <li>Karl</li>
+    <li>Adam</li>
+  </ul>
+</div>
+<div>
+  <ul>
+    <li>Dan</li>
+  </ul>
+</div>
+<div>
+  <ul>
+    <li>Dave</li>
+    <li>Rick</li>
+    <li>Timmy</li>
+    <li>Gibson</li>
+  </ul>
+</div>
+ 
+<script>
+$( "ul li:nth-last-of-type(2)" ).append( "<span> - 2nd to last!</span>" );
+</script>
+ 
+</body>
+</html>
+
+vii)jQuery( ":nth-last-child(index/even/odd/equation)" 
+   Selects all elements that are the nth-child of their parent, counting from the last element to the first.
+Example:
+   <!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>nth-last-child demo</title>
+  <style>
+  div {
+    float: left;
+  }
+  span {
+    color: blue;
+  }
+  </style>
+  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+</head>
+<body>
+ 
+<div>
+  <ul>
+    <li>John</li>
+    <li>Karl</li>
+    <li>Adam</li>
+  </ul>
+</div>
+<div>
+  <ul>
+    <li>Dan</li>
+  </ul>
+</div>
+<div>
+  <ul>
+    <li>Dave</li>
+    <li>Rick</li>
+    <li>Timmy</li>
+    <li>Gibson</li>
+  </ul>
+</div>
+<script>
+$( "ul li:nth-last-child(2)" ).append( "<span> - 2nd to last!</span>" );
+</script>
+ 
+</body>
+</html>
+
+viii)jQuery( ":nth-of-type(index/even/odd/equation)" )
+    Selects all elements that are the nth child of their parent in relation to siblings with the same element name.
+Example:
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>nth-of-type demo</title>
+  <style>
+  .nth {
+    color: red;
+  }
+  </style>
+  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+</head>
+<body>
+ 
+<div>
+  <span>John</span>,
+  <b>Kim</b>,
+  <span>Adam</span>,
+  <b>Rafael</b>,
+  <span>Oleg</span>
+</div>
+<div>
+  <b>Dave</b>,
+  <span>Ann</span>
+</div>
+<div>
+  <i><span>Maurice</span></i>,
+  <span>Richard</span>,
+  <span>Ralph</span>,
+  <span>Jason</span>
+</div>
+ 
+<script>
+$( "span:nth-of-type(2)" )
+  .append( "<span> is 2nd sibling span</span>" )
+  .addClass( "nth" );
+</script>
+ 
+</body>
+</html>
+
+ix)jQuery( ":only-child" )
+   Selects all elements that are the only child of their parent.
+Example:
+   <!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>only-child demo</title>
+  <style>
+  div {
+    width: 100px;
+    height: 80px;
+    margin: 5px;
+    float: left;
+    background: #b9e;
+  }
+  </style>
+  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+</head>
+<body>
+ 
+<div>
+  <button>Sibling!</button>
+  <button>Sibling!</button>
+</div>
+ 
+<div>
+  <button>Sibling!</button>
+</div>
+ 
+<div>
+  None
+</div>
+ 
+<div>
+  <button>Sibling!</button>
+  <button>Sibling!</button>
+  <button>Sibling!</button>
+</div>
+ 
+<div>
+  <button>Sibling!</button>
+</div>
+ 
+<script>
+$( "div button:only-child" ).text( "Alone" ).css( "border", "2px blue solid" );
+</script>
+ 
+</body>
+</html>
+
+x)jQuery( ":only-of-type" )
+    Selects all elements that have no siblings with the same element name.
+Example:
+   <!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>only-of-type demo</title>
+  <style>
+  div {
+    width: 100px;
+    height: 80px;
+    margin: 5px;
+    float: left;
+    background: #b9e;
+  }
+  span {
+    padding: 2px;
+    margin: 3px;
+    line-height: 1.4;
+    border: 1px solid #000;
+  }
+  </style>
+  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+</head>
+<body>
+ 
+<div>
+  <button>Sibling!</button>
+  <button>Sibling!</button>
+</div>
+ 
+<div>
+  <button>Sibling!</button>
+</div>
+<div>
+  None
+</div>
+ 
+<div>
+  <button>Sibling!</button>
+  <span>Sibling!</span>
+  <span>Sibling!</span>
+</div>
+ 
+<div>
+  <button>Sibling!</button>
+</div>
+ 
+<script>
+  $( "button:only-of-type" ).text( "Alone" ).css( "border", "2px blue solid" );
+</script>
+ 
+</body>
+</html>   
+ 
+5)content filter
+i)jQuery( ":contains(text)" )
+      Select all elements that contain the specified text.
+Example:
+   <!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>contains demo</title>
+  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+</head>
+<body>
+ 
+<div>John Resig</div>
+<div>George Martin</div>
+<div>Malcom John Sinclair</div>
+<div>J. Ohn</div>
+ 
+<script>
+$( "div:contains('John')" ).css( "text-decoration", "underline" );
+</script>
+ 
+</body>
+</html>
+
+ii)jQuery( ":empty" )
+     Select all elements that have no children.
+
+Example:
+   <!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>empty demo</title>
+  <style>
+  td {
+    text-align: center;
+  }
+  </style>
+  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+</head>
+<body>
+ 
+<table border="1">
+  <tr><td>TD #0</td><td></td></tr>
+  <tr><td>TD #2</td><td></td></tr>
+  <tr><td></td><td>TD#5</td></tr>
+</table>
+ 
+<script>
+$( "td:empty" )
+  .text( "Was empty!" )
+  .css( "background", "rgb(255,220,200)" );
+</script>
+ 
+</body>
+</html>
+
+iii)jQuery( ":has(selector)" )
+    Selects elements which contain at least one element that matches the specified selector.
+Example:
+     <!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>has demo</title>
+  <style>
+  .test {
+    border: 3px inset red;
+  }
+  </style>
+  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+</head>
+<body>
+ 
+<div><p>Hello in a paragraph</p></div>
+<div>Hello again! (with no paragraph)</div>
+ 
+<script>
+$( "div:has(p)" ).addClass( "test" );
+</script>
+ 
+</body>
+</html>
+
+iv)jQuery( ":parent" )
+     Select all elements that have at least one child node (either an element or text).
+Example:
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>parent demo</title>
+  <style>
+  td {
+    width: 40px;
+    background: green;
+  }
+  </style>
+  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+</head>
+<body>
+ 
+<table border="1">
+  <tr><td>Value 1</td><td></td></tr>
+  <tr><td>Value 2</td><td></td></tr>
+</table>
+ 
+<script>
+$( "td:parent" ).fadeTo( 1500, 0.3 );
+</script>
+ 
+</body>
+</html>
+
+5)hirarechal filters
+i)jQuery( "parent > child" )
+     Selects all direct child elements specified by "child" of elements specified by "parent".
+  Example:
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>child demo</title>
+  <style>
+  body {
+    font-size: 14px;
+  }
+  	</style>
+  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+</head>
+<body>
+ 
+<ul class="topnav">
+  <li>Item 1</li>
+  <li>Item 2
+    <ul>
+    <li>Nested item 1</li>
+    <li>Nested item 2</li>
+    <li>Nested item 3</li>
+    </ul>
+  </li>
+  <li>Item 3</li>
+</ul>
+ 
+<script>
+$( "ul.topnav > li" ).css( "border", "3px double red" );
+</script>
+ 
+</body>
+</html>
+
+ii)jQuery( "ancestor descendant" )
+    Selects all elements that are descendants of a given ancestor.
+Example:
+  <!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>descendant demo</title>
+  <style>
+  form {
+    border: 2px green solid;
+    padding: 2px;
+    margin: 0;
+    background: #efe;
+  }
+  div {
+    color: red;
+  }
+  fieldset {
+    margin: 1px;
+    padding: 3px;
+  }
+  </style>
+  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+</head>
+<body>
+ 
+<form>
+  <div>Form is surrounded by the green border.</div>
+ 
+  <label for="name">Child of form:</label>
+  <input name="name" id="name">
+ 
+  <fieldset>
+    <label for="newsletter">Grandchild of form, child of fieldset:</label>
+    <input name="newsletter" id="newsletter">
+  </fieldset>
+</form>
+Sibling to form: <input name="none">
+ 
+<script>
+$( "form input" ).css( "border", "2px dotted blue" );
+$( "form fieldset input" ).css( "backgroundColor", "yellow" );
+</script>
+ 
+</body>
+</html>
+
+iii)jQuery( "prev + next" )
+   Selects all next elements matching "next" that are immediately preceded by a sibling "prev".
+Example:
+  <!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>next adjacent demo</title>
+  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+</head>
+<body>
+ 
+<form>
+  <label for="name">Name:</label>
+  <input name="name" id="name">
+  <fieldset>
+    <label for="newsletter">Newsletter:</label>
+    <input name="newsletter" id="newsletter">
+  </fieldset>
+</form>
+<input name="none">
+ 
+<script>
+$( "label + input" ).css( "color", "blue" ).val( "Labeled!" );
+</script>
+ 
+</body>
+</html>
+
+iv)jQuery( "prev ~ siblings" )
+   Selects all sibling elements that follow after the "prev" element, have the same parent, and match the filtering "siblings" selector.
+
+example:
+   <!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>next siblings demo</title>
+  <style>
+  div, span {
+    display: block;
+    width: 80px;
+    height: 80px;
+    margin: 5px;
+    background: #bfa;
+    float: left;
+    font-size: 14px;
+  }
+  div#small {
+    width: 60px;
+    height: 25px;
+    font-size: 12px;
+    background: #fab;
+  }
+  </style>
+  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+</head>
+<body>
+ 
+<div>div (doesn't match since before #prev)</div>
+<span id="prev">span#prev</span>
+<div>div sibling</div>
+<div>div sibling <div id="small">div niece</div></div>
+<span>span sibling (not div)</span>
+<div>div sibling</div>
+ 
+<script>
+$( "#prev ~ div" ).css( "border", "3px groove blue" );
+</script>
+ 
+</body>
+</html>
+  
