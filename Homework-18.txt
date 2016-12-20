@@ -1,0 +1,196 @@
+                                                       Homework-18
+1)Event bubbling and event capturing?
+-->Event Bubbling- child event handler is invoked first
+                   parent event handler is invoked next.
+Syntax:
+  parentElement.addEventListener('eventtype', eventHandlerFunction,false);
+      (or)
+  parentElement.addEventListener('eventtype', eventHandlerFunction);
+  childElement.addEventListener('eventtype', eventHandlerFunction);
+
+Example:
+Example:
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+<div id="divId" style="border:1px solid blue;">
+<p id="paraId" style="border:1px solid green;">This is para1</p>
+<p>This is para2</p>
+<p>This is para3</p>
+<p>This is para4</p>
+</div>
+<script>
+document.getElementById("divId").addEventListener('click',function(event){
+console.log('div event handler is invoked');
+},false)
+document.getElementById("paraId").addEventListener('click',function(event){
+console.log('para event handler is invoked');
+})
+</script>
+</body>
+</html>
+
+Event capturing:
+-->Parent is invoked first.
+-->child is invoked next.
+
+Syntax:
+parentElement.addEventListener('eventtype', eventHandlerFunction,true);
+  parentElement.addEventListener('eventtype', eventHandlerFunction);
+
+Example:
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+<div id="divId" style="border:1px solid blue;">
+<p id="paraId" style="border:1px solid green;">This is para1</p>
+<p>This is para2</p>
+<p>This is para3</p>
+<p>This is para4</p>
+</div>
+<script>
+document.getElementById("divId").addEventListener('click',function(event){
+console.log('div event handler is invoked');
+},true)
+document.getElementById("paraId").addEventListener('click',function(event){
+console.log('para event handler is invoked');
+})
+</script>
+</body>
+</html>
+
+
+2)document.addEventListener(event, function, captureflag)
+     Event-Which specifies the name of the event.
+     function - which specifies the function to run when an event occurs.
+                When the event occurs, an event object is passed to the function as the first parameter.
+                The type of the event object depends on the specified event.
+                We can write any number of events without overwriting existing events.
+     captureflag - A Boolean value that specifies whether the event should be executed in the capturing or in the bubbling phase. 
+                   true - The event handler is executed in the capturing phase
+                   false- Default. The event handler is executed in the bubbling phase.
+     Example:
+ <!DOCTYPE html>
+<html>
+<body>
+
+<p>This example uses the addEventListener() method to attach a click event to the document.</p>
+
+<p>Click anywhere in the document.</p>
+
+<p id="demo"></p>
+
+<script>
+document.addEventListener("click", function(){
+    document.getElementById("demo").innerHTML = "Hello World!";
+});
+</script>
+
+</body>
+</html>
+
+3)what is event propagation?
+   event listener on both parent and child element and when we click on the child event Listener the order would be first child
+ event handler will be executed first then parent event handler well be executed.
+
+Example:
+  <!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+<div id="divId" style="border:1px solid blue;">
+<p id="paraId" style="border:1px solid green;">This is para1</p>
+<p>This is para2</p>
+<p>This is para3</p>
+<p>This is para4</p>
+</div>
+<script>
+document.getElementById("divId").addEventListener('click',function(event){
+console.log('div event handler is invoked');
+});
+document.getElementById("paraId").addEventListener('click',function(event){
+console.log('para event handler is invoked');
+});
+</script>
+</body>
+</html>
+
+4)what is event.stopPropagation()?
+    Except parent hieararchy the rest will be invoked.
+Example:
+ <!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+<div id="divId" style="border:1px solid blue;">
+<p id="paraId" style="border:1px solid green;">This is para1</p>
+<p>This is para2</p>
+<p>This is para3</p>
+<p>This is para4</p>
+</div>
+<script>
+document.getElementById("divId").addEventListener('click',function(event){
+console.log('div event handler is invoked');
+});
+document.getElementById("paraId").addEventListener('click',function(event){
+event.stopPropagation();
+console.log('para event handler is invoked');
+});
+document.getElementById("paraId").addEventListener('click',function(event){
+console.log('para event handler is invoked':event on para);
+});
+</script>
+</body>
+</html>
+
+5)what is event.stopImmediatePropagation()?
+     the immediate one will be invoked and the rest will not be invoked.
+ Example:
+ <!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+<div id="divId" style="border:1px solid blue;">
+<p id="paraId" style="border:1px solid green;">This is para1</p>
+<p>This is para2</p>
+<p>This is para3</p>
+<p>This is para4</p>
+</div>
+<script>
+document.getElementById("divId").addEventListener('click',function(event){
+console.log('div event handler is invoked');
+});
+document.getElementById("paraId").addEventListener('click',function(event){
+event.stopImmediatePropagation();
+console.log('para event handler is invoked');
+});
+document.getElementById("paraId").addEventListener('click',function(event){
+console.log('para event handler is invoked':event on para);
+});
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
