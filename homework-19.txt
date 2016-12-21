@@ -1,0 +1,200 @@
+
+1)ng-click directive?
+   i)The AngularJS ng-click directive facilitates  to specify custom behavior when an element is clicked. So, it is responsible for the result what we get 
+after clicking.
+ii)It is supported by all HTML elements.
+
+Syntax:
+<element ng-click="expression"></element>  
+expression: It specifies an expression that is executed when an element is clicked.
+
+Example:
+<!DOCTYPE html>  
+<html>  
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>  
+<body ng-app="">  
+<p>Click the button:</p>  
+<button ng-click="count = count + 1" ng-init="count=0">OK</button>  
+<p>The button has been clicked <strong>{{count}} </strong>times.</p>    
+</body>  
+</html>  
+
+2)Directives are special attributes starting with ng- prefix.
+i)ng-app: This directive starts an AngularJS Application.
+Syntax:
+<element ng-app = "modulename">  
+   ...  
+</element>
+
+modulename: It is an optional parameter. It specifies the name of a module that you want to add with the application.
+Example:
+
+<!DOCTYPE html>  
+<html>  
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>  
+<body>  
+<div ng-app="">  
+<p>The calculated value is : {{ 5 + 5 * 8 / 2}}</p>  
+</div>  
+</body>  
+</html>
+
+output: The calculated value is : 25  
+
+ii)ng-init: This directive initializes application data.
+   The AngularJS ng-bind directive replaces the content of an HTML element with the value of a given variable, or expression. If we change the value of the 
+given variable or expression, AngularJS changes the content of the specified HTML element as well.
+
+Syntax:
+<element ng-bind="expression"></element>  
+
+Expression: It specifies a variable, or an expression to evaluate.
+Example:
+ <!doctype html>  
+<html lang="en">  
+<head>  
+  <meta charset="UTF-8">  
+  <title>ng-bind example</title>  
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>  
+</head>  
+<body ng-app="bindExample">  
+  <script>  
+  angular.module('bindExample', [])  
+    .controller('ExampleController', ['$scope', function($scope) {  
+      $scope.name = 'Java';  
+    }]);  
+</script>  
+<div ng-controller="ExampleController">  
+  <label>Enter name: <input type="text" ng-model="name"></label><br>  
+  Hello <span ng-bind="name"></span>!  
+</div>  
+</body>  
+</html>  
+
+ng-model: This directive defines the model that is variable to be used in AngularJS.
+  syntax:
+   <div ng-app = "">  
+   ...  
+   <p>Enter your Name: <input type = "text" ng-model = "name"></p>  
+</div> 
+ 
+ng-repeat: This directive repeats html elements for each item in a collection.
+
+Example:
+<!DOCTYPE html>
+<html>  
+  <head>  
+      <title>AngularJS Directives</title>  
+   </head>  
+     
+   <body>  
+      <h1>Sample Application</h1>  
+        
+      <div ng-app = "" ng-init = "countries = [{locale:'en-IND',name:'India'}, {locale:'en-PAK',name:'Pakistan'}, {locale:'en-AUS',name:'Australia'}]">   
+         <p>Enter your Name: <input type = "text" ng-model = "name"></p>  
+         <p>Hello <span ng-bind = "name"></span>!</p>  
+         <p>List of Countries with locale:</p>  
+        
+         <ol>  
+            <li ng-repeat = "country in countries">  
+               {{ 'Country: ' + country.name + ', Locale: ' + country.locale }}  
+            </li>  
+         </ol>  
+      </div>  
+      <script src = "http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>  
+         </body>  
+</html>  
+
+
+
+
+
+
+3)In AngularJS, expressions are used to bind application data to HTML. AngularJS resolves the expression, and return the 
+result exactly where the expression is written.
+
+Expressions are written inside double braces {{expression}}
+
+Example:
+<!DOCTYPE html>  
+<html>  
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>  
+<body>  
+<div ng-app>  
+<p>A simple expression example: {{ 5 + 5 }}</p>  
+</div>  
+</body>  
+</html> 
+
+o/p: A simple expression example: 10
+
+4)one-way data binding and Two-way data binding
+
+ i)One-way data binding:
+   The one-way data binding is an approach where a value is taken from the data model and inserted into an HTML element. There is no way to update model from view.
+ These systems bind data in only one direction.
+
+Example:
+<!DOCTYPE html>  
+<html>  
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>  
+<body>  
+<div ng-app="" ng-init="firstName='kavya'">   
+<p>Name: <input type="text" ng-model="firstName"></p>  
+<p>I wrote: {{ firstName }}</p>  
+</div>  
+</body>  
+</html>  
+
+ii)Two-way data binding:
+  1)Data-binding in Angular apps is the automatic synchronization of data between the model and view components.
+  2)If the model is changed, the view reflects the change and vice versa.
+Example:
+   <!DOCTYPE html>  
+<html>  
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>  
+<body>  
+<div data-ng-app="" data-ng-init="quantity=1;price=20">  
+<h2>Cost Calculator</h2>  
+Quantity: <input type="number" ng-model="quantity">  
+Price: <input type="number" ng-model="price">  
+<p><b>Total in rupees:</b> {{quantity * price}}</p>  
+</div>  
+</body>  
+</html> 
+
+
+5)$scope in angularjs?
+  To make a controller in AngularJS, you have to pass the $scope object as an argument.
+Example:
+<!DOCTYPE html>  
+<html>  
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>  
+<body>  
+<div ng-app="myApp" ng-controller="myCtrl">  
+<h1>{{carname}}</h1>  
+</div>  
+<script>  
+var app = angular.module('myApp', []);  
+app.controller('myCtrl', function($scope) {  
+    $scope.carname = "Volvo";  
+});  
+</script>  
+<p>The property "carname" was made in the controller, and can be referred to in the view by using the {{ }} brackets.</p>  
+</body>  
+</html>  
+
+6)can we define multiple controllers with in an application?
+yes we can define
+
+
+
+
+
+
+
+
+
+
+
+
