@@ -1,0 +1,254 @@
+1)isolated scope
+@
+&
+=
+
+i)& gives the ability to pass a method into a directive. The cool thing about this is that when the directive’s isolate scope calls the method, the method will be 
+executed in the scope of the parent, where it was originally declared. As a result, it is effectively also one way communication, but in the upward direction. 
+In Angular this is called expression binding (method <-> expression). This is ideal for our login form’s close button. The parent scope opened the form pop-up,
+ so it should also be responsible to close it. More concretely - the child scope, login-form can call the method submit-login-closeand it will be executed by 
+banking-app as handleLoginClose in its scope. Now login-form does not need to worry about what closing means. You could even pass an argument back with the method 
+call, but that isn’t illustrated here.
+
+<banking-app>
+<login-form submit-login-close='handleLoginClose()'></login-form>
+</banking-app>
+
+Example:
+<html ng-app="directiveExample">
+  
+<head>
+    
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.js"></script>
+    
+<script src="https://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.12.0.js"></script>
+    
+<script src="script.js"></script>
+    
+<link href="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+    
+<link href="style.css" rel="stylesheet">
+  </head>
+  <body ng-controller="sampleController">
+    
+<script type="text/ng-template" id="myModalContent.html">
+      
+<div class="child">
+        
+<p> Directive Child Scope </p>
+        
+<p> Login Please</p>
+        
+<input placeholder="Username"> </input>
+        
+<br>
+        
+<input placeholder="Password"> </input>
+        
+<br>
+        
+<button> Login </button>
+        
+<button ng-click="submitLoginClose()"> Cancel </button>
+      
+</div>
+    
+</script>
+
+    
+<p> PARENT SCOPE </p>
+   
+ <p> Try click "Cancel"</p>
+   
+ <div ng-show="loginViewVisible">
+      
+<login-form submit-login-close="handleLoginClose()"> </login-form>
+    
+</div>
+
+    
+<button ng-click="loginViewVisible = true"> Show Login View</button>
+  
+</body>
+
+</html>
+
+
+ ii)@ is used to pass in a literal value, such as a string or number. Data can be passed from the parent to the child, but not back up. It is one way, downward 
+communication - with one catch: we can only pass in primitives. In Angular terms this is called attribute binding (value <-> attribute).  The title should be different for these two contexts, but everything
+ else stays the same. In the example below, the parent scope, banking-app, can update expiredSessionTitle and login-form will see that change, but it cannot tell 
+banking-app about any change. As a result, this key is ideal for passing data that only needs to be displayed, such as a static title - but remember, primitives only.
+
+<banking-app>
+  <login-form title ='{ { expiredSessionTitle } }'></login-form>
+</banking-app>
+
+Example:
+<!doctype html>
+<html ng-app="directiveExample">
+ 
+ <head>
+    
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.js"></script>
+   
+ <script src="https://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.12.0.js"></script>
+    
+<script src="script.js"></script>
+    
+<link href="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+    
+<link href="style.css" rel="stylesheet">
+  <body ng-controller="sampleController">
+   
+ <script type="text/ng-template" id="myModalContent.html">
+     
+ <div class="child">
+     
+ <p> Directive Child Scope </p>
+        
+<p> {{ title }} </p>
+        
+<input placeholder="Username"> </input>
+      
+  <br>
+        
+<input placeholder="Password"> </input>
+       
+ <br>
+        
+<button> Login </button>
+      
+</div>
+    
+</script>
+
+    
+<p> PARENT SCOPE </p>
+   
+ <login-form title="Please enter your credentials to {{ loginMode }}"> </login-form>
+
+    
+<p> Change login mode text:</p>
+ 
+   <input ng-model="loginMode">
+  
+</body>
+
+</html>
+
+iii)= is the secret to passing in a value by reference. I think of it as a pointer, allowing both scopes to update the same memory location. This gives us full two way 
+communication between the scopes. In a way it’s a combination of @ and &. This means we can also pass in more than primitives, most importantly objects. Angular refers
+ to this as, the now much loved, two-way data binding (reference <-> two-way data binding). Now if a user is trying to extend an expired login session we can pass in 
+all the information we want as a single object. This could include their username, time since their session expired, their favorite color - whatever! Our banking-app 
+now passes in userDetails and login-form can happily display all this to the user. It could even let the user update the details on the banking-app parent scope, 
+although that isn’t useful here. Passing objects into directives is fantastic, and this is the key you will likely be using most often.
+
+<banking-app>
+  <login-form login-details='userDetails'></login-form>
+</banking-app>
+
+Example:
+<!doctype html>
+
+<html ng-app="directiveExample">
+  
+<head>
+    
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.js">
+</script>
+    
+<script src="https://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.12.0.js"></script>
+   
+ <script src="script.js"></script>
+    
+<link href="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+    
+<link href="style.css" rel="stylesheet">
+  
+</head>
+  
+<body ng-controller="sampleController">
+    
+<script type="text/ng-template" id="myModalContent.html">
+      
+<div class="child">
+        
+<p> Directive Child Scope </p>
+        
+<p> Please login</p>
+        
+<input placeholder="Username" ng-model="loginDetails.username"> </input>
+       
+ <br>
+        
+<input placeholder="Password"> </input>
+       
+ <br>
+        
+<button> Login </button>
+      
+  <br>
+       
+ <p> Time since sessions expired: {{ loginDetails.timeSinceExpiration }}</p>
+     
+ </div>
+    
+</script>
+
+   
+ <p> PARENT SCOPE </p>
+   
+ <p> Try change values in either context.</p>
+  
+  <login-form login-details="userDetails"> 
+</login-form>
+
+    
+<p> Stored user details: </p>
+ 
+   <input ng-model="userDetails.username">
+  
+  <input ng-model="userDetails.timeSinceExpiration">
+ 
+ </body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
