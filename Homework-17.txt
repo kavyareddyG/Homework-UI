@@ -1,0 +1,74 @@
+Please open your chrome plugin --> advanced rest client on chrome.
+
+http://rest.learncode.academy/api/johnbob/friends/
+
+http methods (get, post, put, and delete)
+
+research about how --> get, post, put and delete methods can be used 
+
+example usage is given --> http://rest.learncode.academy/
+
+what is ajax?
+$.ajax --> how to use? 
+
+In restful web services we have Http methods get, post, put and delete.
+1)GET method is used to retrieve the information.
+2)POST method is used to create a new record.
+3)PUT method is used to update an existing record.
+4)DELETE method is used to remove a record.
+
+How these methods are used?
+In the advanced rest client on chrome using the URL http://rest.learncode.academy/api/johnbob/friends/
+
+1)GET: method
+Use: retrieving the infomation
+URL:http://rest.learncode.academy/api/johnbob/friends/
+message- -
+
+2)POST: method
+Use: creating a new record
+URL:http://rest.learncode.academy/api/johnbob/friends/
+message- 
+        name -     xyz
+        technology-java.
+
+We can see the new record will be added in the output in this way:
+{
+"name": "xyz",
+"technology": "java",
+"id": "585dced95d05bd01002fe982"
+}
+
+3)PUT: method
+Use: To update a existing record.
+URL:http://rest.learncode.academy/api/johnbob/friends/:id
+message- name- Abc
+         technology:selenium
+output:
+{
+"name": "Abc",
+"technology": "selenium",
+"id": "585dced95d05bd01002fe982"
+}
+
+4)PUT: method
+Use: To remove a existing record.
+URL:http://rest.learncode.academy/api/johnbob/friends/:id
+message: --
+
+2)What is ajax?
+1)AJAX stands for Asynchronous JavaScript and XML. 
+2)It is a client-side script.
+3)Ajax is “the method of exchanging data with a server, and updating parts of a web page – without reloading the entire page.”
+
+3)use of $.ajax?
+used for http methods Get,put,post and delete methods.
+Syntax:
+jQuery.get( url [, data ] [, success ] [, dataType ] )
+
+$.ajax({
+  url: url,
+  data: data,
+  success: success,
+  dataType: dataType
+});
