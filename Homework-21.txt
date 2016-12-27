@@ -1,0 +1,88 @@
+1) what is factory write and example.
+   -- we use a return keyword
+  -- we can return any javascrit data type
+  -- return any java script data type (object, number, undefined, boolean, ..., function).
+  -- we can inject factories into controller.
+module.factory('MyService', function() {
+var factory = {}; 
+factory.method1 = function() {
+//..
+}
+factory.method2 = function() {
+//..
+}
+return factory;
+});
+
+
+2) what is service write and example?
+singleton 
+only one object through out the entire application.
+we dont have to use a return keyword.
+Service can only provide a Object.
+its is instatiated once. its uses new keyword internally for the first time.
+suppose if you want to define any helper methods.
+if same piece of functionality is needed in multiple controller. Better put it in a service and make it available in the needed controllers.
+ 
+module.service('MyService', function() {
+	this.method1 = function() {
+			//..
+		}
+
+	this.method2 = function() {
+			//..
+		}
+}); 
+3) what are diff between factory and service? are both of them singleton? what is singleton?
+  module.service( 'serviceName', function );
+
+module.factory( 'factoryName', function );
+
+When declaring serviceName as an injectable argument you will be provided with an instance of the function. In other words 
+new FunctionYouPassedToService(). This object instance becomes the service object that AngularJS registers and injects later 
+to other services / controllers if required.
+
+When declaring factoryName as an injectable argument you will be provided with the value that is returned by invoking the 
+function reference passed to module.factory.
+
+ In factory we created a factory object and assigned the methods to it.
+
+4) how to make ajax calls using $http  and all methods of http like(get, post, put and delete).
+$http is an AngularJS service for reading data from remote servers.
+
+The AngularJS $http service makes a request to the server, and returns a response.
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<body>
+
+<div ng-app="myApp" ng-controller="myCtrl"> 
+
+<p>Today's welcome message is:</p>
+
+<h1>{{myWelcome}}</h1>
+
+</div>
+
+<p>The $http service requests a page on the server, and the response is set as the value of the "myWelcome" variable.</p>
+
+<script>
+var app = angular.module('myApp', []);
+app.controller('myCtrl', function($scope, $http) {
+  $http({
+    method : "GET",
+    url : "welcome.htm"
+  }).then(function mySucces(response) {
+      $scope.myWelcome = response.data;
+    }, function myError(response) {
+      $scope.myWelcome = response.statusText;
+  });
+});
+</script>
+
+</body>
+</html>
+
+5) What is $q?
+  A service that helps you run functions asynchronously, and use their return values (or exceptions) when they are done 
+processing.
