@@ -1,0 +1,139 @@
+1)what is promise and explain by example?
+
+    Promise is an interface which represent a proxy value. ie. We don’t know the value at the time it’s created. This promise will return value like any 
+synchronous function in future. There can be several states for a promise.
+
+pending: initial state, not fulfilled/rejected.
+fulfilled: successful operation
+rejected: failed operation.
+settled: the Promise is either fulfilled or rejected, but not pending.
+
+Example:
+
+(function () {
+ // function somewhere in father-controller.js
+ var makePromiseWithSon = function () {
+ // This service's function returns a promise, but we'll deal with that shortly
+ SonService.getWeather()
+ // then() called when son gets back
+  .then(function (data) {
+ // promise fulfilled
+ if (data.forecast === 'good') {
+prepareFishingTrip();
+} else {
+prepareSundayRoastDinner();
+}
+ }, function (error) {
+// promise rejected, could log the error with: console.log('error', error);
+prepareSundayRoastDinner();
+  });
+    };
+})()
+      
+
+2)What is deferred object and explain it by example?
+
+Deferred is an object which expose the promise. It has  mainly three methods resolve(), reject(), and notify(). Deferred returns promise object. When Deferred completes, You call methods either resolve(), reject(), and notify() . It calls callback register to either resolve(), reject(), or notify() according to how it has completed.
+
+Example:
+
+function sayHelloAsync(name) {
+ return function () {
+ var defer = $q.defer()
+ setTimeout(function() {
+ //Greet when your name is 'deepak'
+ if (name == 'deepak') {
+ defer.resolve('Hello, ' + name + '!');
+  }
+  else {
+ defer.reject('Greeting ' + name + ' is not allowed.');
+            }
+ }, 1000);
+ 
+ return defer.promise
+    }
+}      
+      
+
+
+3)promise chaining?
+   There are cases when there is the need to perform a set of asynchronous operations, one after another, to load or process something. In AngularJS, If the result of each operation is wrapped by a promise, taking advantage of promise chaining leads to code easier to be read and maintained
+ 
+ I had a glance at documentation and some examples and got acquainted to its basics - the successful and error callbacks and so on.
+Then I had to write something to load a complex resource, by walking over a sort of tree structure, in order to feed in some form. Given all that I knew so far, I wrote what seemed intuitive to me:
+Load the first resource and have its result as a promise
+On the success callback for that promise, process the first resource and load the second resource, to have a second promise
+And so on....
+
+resourceService.loadResourceOne().then(
+    function (resourceOne) {
+        var inputForResourceTwo = computeInputForResource(resourceOne);
+
+        resourceService.loadResourceTwo(inputForResourceTwo).then(
+            function (resourceTwo) {
+                var inputForResourceThree = computeInputForResource(resourceTwo);
+
+                resourceService.loadResourceThree(inputForResourceThree).then(
+                    function (resourceThree) {
+                        // Successful end
+
+                        console.log('Resource found: ' + resourceThree);
+                    },
+                    function (errorLoadingResourceThree) {
+                        handleError(errorLoadingResourceThree);
+                    }
+                )
+            },
+            function (errorLoadingResourceTwo) {
+                handleError(errorLoadingResourceTwo);
+            }
+        )
+    },
+    function (errorLoadingResourceOne) {
+        handleError(errorLoadingResourceOne);
+    }
+);
+
+
+
+
+ The increasing nesting of blocks, and the need to scroll the screen up and down to see the success and error handling for an intermediate promise really called my attention. I realized I should look for some refactoring.
+By AngularJS design, a promise callback can return another callback, so the load of resources could be done in adjacent blocks of code. That is the so called promise chaining.
+ 
+The load of three resources, now as a chain:
+ 
+resourceService.loadResourceOne().then(
+    function (resourceOne) {
+        var inputForResourceTwo = computeInputForResource(resourceOne);
+
+        // returns promise to the next step in the chain
+        return resourceService.loadResourceTwo(inputForResourceTwo);
+    }
+).then(
+    function (resourceTwo) {
+        var inputForResourceThree = computeInputForResource(resourceTwo);
+
+        return resourceService.loadResourceThree(inputForResourceThree);
+    }
+).then(
+    function (resourceThree) {
+        // Successful end
+        
+        console.log('Resource found: ' + resourceThree);
+    }
+).catch(
+    function (error) {
+        handleError(error);
+    }
+);
+
+
+
+
+
+
+
+
+
+
+
