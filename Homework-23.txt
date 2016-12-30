@@ -1,0 +1,169 @@
+1) promise chaining
+   Promise is an interface which represent a proxy value. ie. We don’t know the value at the time it’s created. This promise will return value like any 
+synchronous function in future. There can be several states for a promise.
+
+pending: initial state, not fulfilled/rejected.
+fulfilled: successful operation
+rejected: failed operation.
+settled: the Promise is either fulfilled or rejected, but not pending.
+
+Example:
+
+(function () {
+ // function somewhere in father-controller.js
+ var makePromiseWithSon = function () {
+ // This service's function returns a promise, but we'll deal with that shortly
+ SonService.getWeather()
+ // then() called when son gets back
+  .then(function (data) {
+ // promise fulfilled
+ if (data.forecast === 'good') {
+prepareFishingTrip();
+} else {
+prepareSundayRoastDinner();
+}
+ }, function (error) {
+// promise rejected, could log the error with: console.log('error', error);
+prepareSundayRoastDinner();
+  });
+    };
+})()
+      
+2) promise.all
+   A service that helps you run functions asynchronously, and use their return values (or exceptions) when they are done processing.
+ $q can be used in two fashions --- one which is more similar to Kris Kowal's Q or jQuery's Deferred implementations, and the other which resembles ES6 (ES2015) promises 
+to some degree.
+
+UploadService.uploadQuestion = function(questions){
+var promises = [];
+for(var i = 0 ; i < questions.length ; i++){
+var deffered  = $q.defer();
+var question  = questions[i]; 
+$http({
+url   : 'upload/question',
+method: 'POST',
+data  : question
+}).
+success(function(data){
+deffered.resolve(data);
+})
+error(function(error){
+deffered.reject();
+});
+promises.push(deffered.promise);
+}
+return $q.all(promises);
+}
+
+And here is my controller which call the services:
+
+uploadService.uploadQuestion(questions).then(function(datas){
+
+   //the datas can not be retrieved although the server has responded    
+}, 
+function(errors){ 
+   //errors can not be retrieved also
+
+})
+3) what is single page applications? how to write a program using, using ngRoute to develop single page applications.
+ The ngRoute module helps our application to become a Single Page Application.
+If we want to navigate to different pages in your application, but we also want the application to be a SPA (Single Page Application), with no page reloading, you can use the ngRoute module.
+The ngRoute module routes your application to different pages without reloading the entire application.
+
+<html>
+<head>
+<title>RoutingDemo App</title>
+</head>
+<body ng-app='routingDemoApp'>
+<h2>AngularJS Routing Application</h2>
+<ul>
+<li><a href="#/">Default Route</a></li>
+<li><a href="#/computers">Computer Route</a></li>
+<li><a href="#/printers">Printers Route</a></li>
+<li><a href="#/blabla">Unknown Route</a></li>
+</ul>
+<div ng-view></div>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular-route.js"></script>
+<script>
+ angular.module('routingDemoApp',['ngRoute'])
+.config(['$routeProvider', function($routeProvider){
+$routeProvider
+.when('/',{template:'This is the default Route'})
+.when('/computers',{template:'This is the computers Route'})
+.when('/printers',{template:'This is the printers Route'})
+.otherwise({redirectTo:'/'});
+}]);
+</script>
+</body>
+</html>
+4) ui.router to implement routing?
+    AngularJS is packed with out-of-the-box features that we can use to build an expressive AngularJS app without relying on separate libraries; however, the very
+ active AngularJS community has also built some great libraries that we can take advantage of to maximize the power of our apps.
+
+This post is the first post in our mini-series where we’re covering professional components of the AngularUI library. In this post, we’ll walk through the ui-router.
+
+The AngularUI library has been broken out into several modules so that, rather than including the entire suite, we can pick and choose the components that we’re 
+interested in using.
+   
+var App = angular.module('routingDemoApp',['ui.router']);
+ 
+App.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider){
+// For any unmatched url, send to /business
+$urlRouterProvider.otherwise("/business")
+                 
+$stateProvider
+.state('business', {//State demonstrating Nested views
+url: "/business",
+templateUrl: "business.html"
+})
+.state('business.products', {//nested state [products is the nested state of business state]
+url: "/products",
+templateUrl: "products.html",
+controller: function($scope){
+$scope.products = ["Computer", "Printers", "Phones", "Bags"];
+}
+})
+.state('business.services', {//nested state [services is the nested state of business state]
+url: "/services",
+templateUrl: "services.html",
+controller: function($scope){
+$scope.services = ["Selling", "Support", "Delivery", "Reparation"];
+}
+})
+ 
+.state('portfolio', {//State demonstrating Multiple,named views
+url: "/portfolio",
+views: {
+ ""  :    { templateUrl: "portfolio.html" },
+"view1@portfolio": { template: "Write whatever you want, it's your virtual company." },
+"view2@portfolio": { templateUrl: "clients.html" ,
+controller: function($scope){
+$scope.clients = ["HP", "IBM", "MicroSoft"];
+}
+   }
+       }
+    })
+}]);
+5) diff ui.router and ngRoute?
+ ui-router allows for nested views and multiple named views. This is very useful with larger app where you may have pages that inherit from other sections.
+ui-router allows for you to have strong-type linking between states based on state names. Change the url in one place will update every link to that state when 
+we build your links with ui-sref. Very useful for larger projects where URLs might change.
+There is also the concept of the decorator which could be used to allow your routes to be dynamically created based on the URL that is trying to be accessed. 
+This could mean that you will not need to specify all of your routes before hand.
+states allow you to map and access different information about different states and you can easily pass information between states via $stateParams.
+You can easily determine if you are in a state or parent of a state to adjust UI element (highlighting the navigation of the current state) within your templates via 
+$state provided by ui-router which you can expose via setting it in $rootScope on run.
+
+ngRoute is a module developed by the AngularJS team which was earlier part of the AngularJS core.
+
+ui-router is a framework which was made outside the AngularJS project to improve and enhance routing capabilities.
+
+ngRoute is a angular core module which is good for basic scenarios. I believe that they will add more powerful features in upcoming releases.
+
+Ui-router is a contributed module which is overcome the problems of ngRoute. Mainly Nested/Complex views.
+
+ngRoute is part of the core AngularJS framework.
+
+ui-router is a community library that has been created to attempt to improve upon the default routing capabilities.
+
